@@ -10,6 +10,17 @@
  * @copyright Copyright (c) 2014 Hervé Guétin (http://www.herveguetin.com)
  */
 -->
+
+<!--
+
+ROADMAP
+
+- Use several remote repos
+- Move "force push" button to each remote repo
+- Create a "Pull" button for each remote repo
+
+-->
+
 <config>
     <modules>
         <Herve_Modex>

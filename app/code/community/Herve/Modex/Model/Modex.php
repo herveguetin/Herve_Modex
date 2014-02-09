@@ -353,7 +353,7 @@ class Herve_Modex_Model_Modex extends Mage_Connect_Model_Extension
                 case 'magemedia':
                     $prefix = 'media/';
                     break;
-                case 'makeskin':
+                case 'mageskin':
                     $prefix = 'skin/';
                     break;
                 default:
