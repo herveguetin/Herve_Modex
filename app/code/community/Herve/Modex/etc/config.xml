@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * This file is part of Herve_Modex for Magento.
+ *
+ * @license http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author Hervé Guétin <herve.guetin@gmail.com>
+ * @category Herve
+ * @package Herve_Modex
+ * @copyright Copyright (c) 2014 Hervé Guétin (http://www.herveguetin.com)
+ */
+-->
+<config>
+    <modules>
+        <Herve_Modex>
+            <version>1.0.0.0</version>
+        </Herve_Modex>
+    </modules>
+    <global>
+        <blocks>
+            <herve_modex>
+                <class>Herve_Modex_Block</class>
+            </herve_modex>
+        </blocks>
+        <helpers>
+            <herve_modex>
+                <class>Herve_Modex_Helper</class>
+            </herve_modex>
+        </helpers>
+        <models>
+            <herve_modex>
+                <class>Herve_Modex_Model</class>
+                <resourceModel>herve_modex_resource</resourceModel>
+            </herve_modex>
+            <herve_modex_resource>
+                <class>Herve_Modex_Model_Resource</class>
+                <entities>
+                    <modex_package>
+                        <table>herve_modex_package</table>
+                    </modex_package>
+                </entities>
+            </herve_modex_resource>
+        </models>
+        <resources>
+            <herve_modex_setup>
+                <setup>
+                    <module>Herve_Modex</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </herve_modex_setup>
+        </resources>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <herve_modex after="Mage_Adminhtml">Herve_Modex_Adminhtml</herve_modex>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <events>
+            <controller_action_predispatch_adminhtml_extension_custom_index>
+                <observers>
+                    <clean_modex_packages>
+                        <model>Herve_Modex_Model_Adminhtml_Observer</model>
+                        <method>cleanModexPackages</method>
+                    </clean_modex_packages>
+                </observers>
+            </controller_action_predispatch_adminhtml_extension_custom_index>
+            <controller_action_postdispatch_adminhtml_extension_custom_save>
+                <observers>
+                    <save_modex>
+                        <model>Herve_Modex_Model_Adminhtml_Observer</model>
+                        <method>saveModex</method>
+                    </save_modex>
+                </observers>
+            </controller_action_postdispatch_adminhtml_extension_custom_save>
+            <herve_modex_createmodex_after>
+                <observers>
+                    <process_modex_git>
+                        <model>Herve_Modex_Model_Adminhtml_Observer</model>
+                        <method>updateGit</method>
+                    </process_modex_git>
+                </observers>
+            </herve_modex_createmodex_after>
+        </events>
+        <layout>
+            <updates>
+                <herve_modex module="Herve_Modex">
+                    <file>herve_modex.xml</file>
+                </herve_modex>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Herve_Modex>
+                    <files>
+                        <default>Herve_Modex.csv</default>
+                    </files>
+                </Herve_Modex>
+            </modules>
+        </translate>
+    </adminhtml>
+    <herve_modex>
+        <repository>
+            <git>
+                <bin>/usr/bin/git</bin>
+            </git>
+        </repository>
+    </herve_modex>
+</config>

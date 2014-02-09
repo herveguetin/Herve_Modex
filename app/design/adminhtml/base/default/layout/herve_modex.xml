@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+/**
+ * This file is part of Herve_Modex for Magento.
+ *
+ * @license http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author Hervé Guétin <herve.guetin@gmail.com>
+ * @category Herve
+ * @package Herve_Modex
+ * @copyright Copyright (c) 2014 Hervé Guétin (http://www.herveguetin.com)
+ */
+-->
+<layout version="0.1.0">
+    <adminhtml_extension_custom_edit>
+        <reference name="connect_extension_edit_tabs">
+            <block type="herve_modex/adminhtml_extension_custom_edit_tab_modex" name="tab_modex" />
+            <action method="addTab"><name>modex</name><block>tab_modex</block></action>
+        </reference>
+    </adminhtml_extension_custom_edit>
+</layout>

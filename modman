@@ -1,0 +1,5 @@
+app/code/community/Herve/Modex app/code/community/Herve/Modex
+app/design/adminhtml/base/default/layout/herve_modex.xml app/design/adminhtml/base/default/layout/herve_modex.xml
+app/etc/modules/Herve_Modex.xml app/etc/modules/Herve_Modex.xml
+app/locale/fr_FR/Herve_Modex.csv app/locale/fr_FR/Herve_Modex.csv
+lib/PHP-Stream-Wrapper-for-Git lib/PHP-Stream-Wrapper-for-Git
