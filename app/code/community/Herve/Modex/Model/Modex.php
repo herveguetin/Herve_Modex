@@ -161,7 +161,7 @@ class Herve_Modex_Model_Modex extends Mage_Connect_Model_Extension
             return true;
         }
         catch(Exception $e) {
-            //die($e->getMessage());
+            die($e->getMessage());
             return false;
         }
     }
@@ -227,7 +227,7 @@ class Herve_Modex_Model_Modex extends Mage_Connect_Model_Extension
                 $io->mkdir($filename);
             }
             else {
-                $io->cp($tmpFile, $filename);
+                copy($tmpFile, $filename);
             }
         }
 
@@ -263,7 +263,7 @@ class Herve_Modex_Model_Modex extends Mage_Connect_Model_Extension
                 $io->rmdir($itemToRemove, true);
             }
             else {
-                $io->rm($itemToRemove);
+                @unlink($itemToRemove);
             }
         }
 
@@ -276,7 +276,7 @@ class Herve_Modex_Model_Modex extends Mage_Connect_Model_Extension
             @rename($packageFilename, $connectPath . DS . $packageName);
         }
         else {
-            $io->rm($packageFilename);
+            unlink($packageFilename);
         }
 
         return $this;
@@ -292,7 +292,7 @@ class Herve_Modex_Model_Modex extends Mage_Connect_Model_Extension
         $readmeFile = $this->getPath() . DS . 'README.md';
 
         if(!$this->hasReadme() || $this->getReadme() == 0 || !$this->getReadme()) {
-            $this->getIo()->rm($readmeFile);
+            @unlink($readmeFile);
             return $this;
         }
 
@@ -315,7 +315,7 @@ class Herve_Modex_Model_Modex extends Mage_Connect_Model_Extension
         $modmanFile = $this->getPath() . DS . 'modman';
 
         if(!$this->hasModman() || $this->getModman() == 0 || !$this->getModman()) {
-            $this->getIo()->rm($modmanFile);
+            @unlink($modmanFile);
             return $this;
         }
 
